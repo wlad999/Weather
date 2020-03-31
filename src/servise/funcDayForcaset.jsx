@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 
 const funcDayForecast = props => {
-  console.log("props", props);
+  // console.log("props", props);
 
   let { fiveDayOwnWeather, rightDay } = props;
   rightDay += "";

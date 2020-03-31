@@ -9,7 +9,9 @@ import Geolocation from "./components/Geo/Geolocation";
 import Today from "./components/Today/Today";
 import Tomorrow from "./components/Tomorrow/Tomorrow";
 import Week from "./components/Week/Week";
+import Nav from "./components/Nav/Nav";
 import * as actions from "./redux/Weather/actions";
+import { getCitiesList } from "./utils/utils";
 
 class App extends Component {
   constructor(props) {
@@ -17,7 +19,10 @@ class App extends Component {
     this.state = {};
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const listFromLocal = getCitiesList();
+    this.props.saveCity(listFromLocal);
+  }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.coords !== this.props.coords) {
@@ -36,26 +41,35 @@ class App extends Component {
       coords,
       coord5daysHours,
       fiveDayOwnWeather,
+      getCityWeather,
+      foundСity,
+      saveCity,
+      citiesList,
     } = this.props;
 
     return (
       <div className="container-fluid">
-        <div className="row">
-          <Header coord5daysHours={coord5daysHours} coords={coords} />
-          {ownWeatherNow ? (
-            <City ownWeatherNow={ownWeatherNow} />
-          ) : (
-            <Geolocation
-              coords={coords}
-              isGeolocationAvailable={isGeolocationAvailable}
-              isGeolocationEnabled={isGeolocationEnabled}
-            />
-          )}
-          <Week fiveDayOwnWeather={fiveDayOwnWeather} />
-          {/* <Tomorrow fiveDayOwnWeather={fiveDayOwnWeather} /> */}
-          {/* <Today fiveDayOwnWeather={fiveDayOwnWeather} /> */}
-          {/* <SavedCities /> */}
-        </div>
+        <Header
+          coord5daysHours={coord5daysHours}
+          coords={coords}
+          getCityWeather={getCityWeather}
+          foundСity={foundСity}
+        />
+
+        <City
+          ownWeatherNow={ownWeatherNow}
+          coords={coords}
+          isGeolocationAvailable={isGeolocationAvailable}
+          isGeolocationEnabled={isGeolocationEnabled}
+          saveCity={saveCity}
+          foundСity={foundСity}
+          citiesList={citiesList}
+        />
+
+        {/* <Week fiveDayOwnWeather={fiveDayOwnWeather} /> */}
+        {/* <Tomorrow fiveDayOwnWeather={fiveDayOwnWeather} /> */}
+        {/* <Today fiveDayOwnWeather={fiveDayOwnWeather} /> */}
+        <SavedCities citiesList={citiesList} />
       </div>
     );
   }
@@ -63,6 +77,8 @@ class App extends Component {
 const MSTP = state => ({
   ownWeatherNow: state.weather.ownWeatherNow,
   fiveDayOwnWeather: state.weather.fiveDayOwnWeather,
+  foundСity: state.weather.foundСity,
+  citiesList: state.weather.citiesList,
 });
 
 export default compose(

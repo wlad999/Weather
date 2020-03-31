@@ -2,8 +2,6 @@ import React from "react";
 import moment from "moment";
 
 const funcFiveDaysForcaset = props => {
-  console.log("props", props);
-
   let { fiveDayOwnWeather, rightDay } = props;
   rightDay += "";
 
@@ -13,7 +11,7 @@ const funcFiveDaysForcaset = props => {
   try {
     if (fiveDayOwnWeather.list) {
       forcasetDayList = fiveDayOwnWeather.list.filter(item => {
-        const dayin = moment(item.dt * 1000).format("D");
+        const dayin = moment(item.dt * 1000).format("MMMM, D");
         if (rightDay === dayin) {
           return item;
         }
@@ -22,13 +20,15 @@ const funcFiveDaysForcaset = props => {
         const time = moment(item.dt * 1000).format("HH:mm");
 
         return (
-          <p key={item.dt} className="small">
-            {time}
-            <span className="pl-2">
-              {item.main.temp}&deg;C, {item.weather[0].main},
+          <div key={item.dt} className="small">
+            <span key={item.dt}>
+              {time}
+              <span className="pl-2">
+                {item.main.temp}&deg;C, {item.weather[0].main},
+              </span>
             </span>
-            <div> Wind - {item.wind.speed} meter/sec</div>
-          </p>
+            <p>Wind - {item.wind.speed} meter/sec</p>
+          </div>
         );
       });
     }

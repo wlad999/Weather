@@ -1,4 +1,5 @@
 import React from "react";
+import "./Nav.scss";
 
 const Nav = props => {
   const { coord5daysHours } = props;
@@ -19,23 +20,21 @@ const Nav = props => {
   }
 
   return (
-    <div className="col">
-      <nav className="nav">
-        <button
-          type="button"
-          className="btn text-black-50"
-          onClick={todayWeather}
-        >
-          Today
-        </button>
-        <button type="button" className="btn text-black-50">
-          Tomorrow
-        </button>
-        <button type="button" className="btn text-black-50">
-          Week
-        </button>
-      </nav>
-    </div>
+    <nav className="nav">
+      <button
+        type="button"
+        className="btn text-black-50"
+        onClick={todayWeather}
+      >
+        Today
+      </button>
+      <button type="button" className="btn text-black-50">
+        Tomorrow
+      </button>
+      <button type="button" className="btn text-black-50">
+        Week
+      </button>
+    </nav>
   );
 };
 export default Nav;

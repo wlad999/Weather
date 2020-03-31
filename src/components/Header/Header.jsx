@@ -4,13 +4,14 @@ import Nav from "../Nav/Nav";
 import Input from "../Input/Input";
 
 const Header = props => {
-  const { coord5daysHours } = props;
-  const { coords } = props;
+  const { coord5daysHours, getCityWeather, coords, foundСity } = props;
   return (
-    <div className="col-12 border-bottom border-2 Header">
-      <div className="row justify-content-between align-items-center">
+    <div className="row justify-content-between align-items-center Nav border-bottom border-2">
+      <div className="col-6">
         <Nav coord5daysHours={coord5daysHours} coords={coords} />
-        <Input />
+      </div>
+      <div className="col-4">
+        <Input getCityWeather={getCityWeather} foundСity={foundСity} />
       </div>
     </div>
   );

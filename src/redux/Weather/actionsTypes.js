@@ -1,6 +1,8 @@
 const actionTypes = {
   WEATHER_COORDS: "WEATHER_COORDS",
   WEATHER_COORDS_5_DAYS: "WEATHER_COORDS_5_DAYS",
+  CITIES_LIST: "CITIES_LIST",
+  FOUND_CITY: "FOUND_CITY",
 };
 
 export default actionTypes;

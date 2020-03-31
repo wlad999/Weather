@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment";
 import funcFiveDaysForcaset from "../../servise/funcFiveDaysForcaset";
+import "./Week.scss";
 
 const Week = props => {
   const { fiveDayOwnWeather } = props;
@@ -11,24 +12,24 @@ const Week = props => {
   const weatherArr = [];
   try {
     fiveDayOwnWeather.list.forEach(item => {
-      const day = moment(item.dt * 1000).format("D");
       const weekDay = moment(item.dt * 1000).format("MMMM, D");
-      if (daysArr.includes(day)) {
+      if (daysArr.includes(weekDay)) {
         return;
       }
-      return daysArr.push(day);
+      return daysArr.push(weekDay);
     });
-    console.log("daysArr", daysArr);
-
     daysArr.map(item => {
       return weatherArr.push(
-        <div className="col border border-2 p-2 d-inline m-2">
+        <span
+          key={item}
+          className="col border border-2 p-2 m-2 inline pre-scrollable Week"
+        >
           {item}
           {funcFiveDaysForcaset({
             fiveDayOwnWeather,
             rightDay: item,
           })}
-        </div>,
+        </span>,
       );
     });
 

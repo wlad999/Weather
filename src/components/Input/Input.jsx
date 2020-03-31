@@ -1,18 +1,58 @@
 import React from "react";
+import { ErrorMessage, Formik } from "formik";
+import * as Yup from "yup";
+import { cityRegExp } from "../../utils/utils";
 
-const Input = () => {
+const validationSchema = Yup.object().shape({
+  city: Yup.string()
+    .matches(cityRegExp, "only Cyrillic or Latin")
+    .min(3, "Name too short")
+    .max(30, "Name too long"),
+});
+
+const Input = ({ getCityWeather, foundСity }) => {
+  const onSubmit = values => {
+    getCityWeather(values.city);
+    values.city = "";
+  };
+  const change = (name, e, handleChange, setFieldTouched) => {
+    e.persist();
+    handleChange(e);
+    setFieldTouched(name, true, false);
+  };
+
   return (
-    <div className="col-3 align-self-center">
-      <form>
-        <div className="form-group">
+    <Formik
+      initialValues={{ city: "" }}
+      onSubmit={values => onSubmit(values)}
+      validationSchema={validationSchema}
+    >
+      {({ values, errors, handleChange, handleSubmit, setFieldTouched }) => (
+        <form onSubmit={handleSubmit}>
           <input
-            className="form-control"
+            onChange={e => {
+              change("city", e, handleChange, setFieldTouched);
+            }}
+            name="city"
+            className="form-control form-control-sm"
             type="text"
             placeholder="Find city..."
+            autoComplete="on"
+            value={values.city}
           />
-        </div>
-      </form>
-    </div>
+          {errors.city && (
+            <div className="text-danger small">
+              <ErrorMessage name="city" />
+            </div>
+          )}
+          {!errors.city && foundСity.name && (
+            <div className="text-success small">
+              You can add {foundСity.name} to the list of cities
+            </div>
+          )}
+        </form>
+      )}
+    </Formik>
   );
 };
 export default Input;

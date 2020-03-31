@@ -9,5 +9,6 @@ export const coord5daysHours = (lat, lon) =>
   API.get(
     `data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=metric`,
   );
-// api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={your api key}
-export const city = town => API.get(`q=${town}&appid=${weatherApiKey}`);
+
+export const city = town =>
+  API.get(`data/2.5/weather?q=${town}&appid=${weatherApiKey}`);
