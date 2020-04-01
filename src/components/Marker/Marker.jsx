@@ -2,7 +2,7 @@ import React from "react";
 import "./Marker.scss";
 import { ReactComponent as Point } from "../../assets/svg/point.svg";
 
-const Marker = ({ text }) => {
+const Marker = () => {
   return (
     <div className="Marker">
       <Point />
@@ -11,12 +11,3 @@ const Marker = ({ text }) => {
 };
 
 export default Marker;
-{
-  /* &#9971; */
-}
-{
-  /* &#128276; */
-}
-{
-  /* &#9989; */
-}

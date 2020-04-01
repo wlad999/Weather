@@ -30,4 +30,3 @@ class GoogleMaps extends Component {
 }
 
 export default GoogleMaps;
-// bootstrapURLKeys={{ key: "AIzaSyAqizZFmDgJC5l6Md8drBBaeK4TFAyCNy8" }}

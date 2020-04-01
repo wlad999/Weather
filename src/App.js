@@ -5,11 +5,7 @@ import { geolocated } from "react-geolocated";
 import Header from "./components/Header/Header";
 import City from "./components/City/City";
 import SavedCities from "./components/SavedCitys/SavedCitys";
-import Geolocation from "./components/Geo/Geolocation";
-import Today from "./components/Today/Today";
-import Tomorrow from "./components/Tomorrow/Tomorrow";
-import Week from "./components/Week/Week";
-import Nav from "./components/Nav/Nav";
+import LongForecast from "./components/LongForecast/LongForecast";
 import * as actions from "./redux/Weather/actions";
 import { getCitiesList } from "./utils/utils";
 
@@ -20,42 +16,57 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const listFromLocal = getCitiesList();
-    this.props.saveCity(listFromLocal);
+    const { saveCity } = this.props;
+    saveCity(getCitiesList());
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.coords !== this.props.coords) {
-      this.props.userWeather(
-        this.props.coords.latitude,
-        this.props.coords.longitude,
-      );
+  componentDidUpdate(prevProps) {
+    const { coords, toggle, userWeather, coord5daysHours } = this.props;
+    if (
+      prevProps.coords !== coords ||
+      (prevProps.toggle.ownWeater !== toggle.ownWeater &&
+        toggle.ownWeater === true)
+    ) {
+      userWeather(coords.latitude, coords.longitude);
+      coord5daysHours(coords.latitude, coords.longitude);
     }
   }
 
   render() {
     const {
+      showCityWeather,
       ownWeatherNow,
       isGeolocationAvailable,
       isGeolocationEnabled,
       coords,
-      coord5daysHours,
       fiveDayOwnWeather,
       getCityWeather,
       foundСity,
       saveCity,
       citiesList,
+      toggle,
+      tomorrowToggle,
+      todayToggle,
+      weekToggle,
+      cityWeatherWeek,
+      cityList,
+      cityToggle,
     } = this.props;
 
     return (
       <div className="container-fluid">
         <Header
-          coord5daysHours={coord5daysHours}
-          coords={coords}
+          showCityWeather={showCityWeather}
           getCityWeather={getCityWeather}
           foundСity={foundСity}
+          tomorrowToggle={tomorrowToggle}
+          todayToggle={todayToggle}
+          weekToggle={weekToggle}
+          ownWeatherNow={ownWeatherNow}
+          cityWeatherWeek={cityWeatherWeek}
+          cityList={cityList}
+          toggle={toggle}
         />
-
         <City
           ownWeatherNow={ownWeatherNow}
           coords={coords}
@@ -65,11 +76,11 @@ class App extends Component {
           foundСity={foundСity}
           citiesList={citiesList}
         />
-
-        {/* <Week fiveDayOwnWeather={fiveDayOwnWeather} /> */}
-        {/* <Tomorrow fiveDayOwnWeather={fiveDayOwnWeather} /> */}
-        {/* <Today fiveDayOwnWeather={fiveDayOwnWeather} /> */}
-        <SavedCities citiesList={citiesList} />
+        {toggle.today || toggle.week ? (
+          <LongForecast toggle={toggle} fiveDayOwnWeather={fiveDayOwnWeather} />
+        ) : (
+          <SavedCities citiesList={citiesList} cityToggle={cityToggle} />
+        )}
       </div>
     );
   }
@@ -79,6 +90,7 @@ const MSTP = state => ({
   fiveDayOwnWeather: state.weather.fiveDayOwnWeather,
   foundСity: state.weather.foundСity,
   citiesList: state.weather.citiesList,
+  toggle: state.weather.toggle,
 });
 
 export default compose(

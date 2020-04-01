@@ -11,4 +11,7 @@ export const coord5daysHours = (lat, lon) =>
   );
 
 export const city = town =>
-  API.get(`data/2.5/weather?q=${town}&appid=${weatherApiKey}`);
+  API.get(`data/2.5/weather?q=${town}&appid=${weatherApiKey}&units=metric`);
+
+export const cityWeek = town =>
+  API.get(`data/2.5/forecast?q=${town}&appid=${weatherApiKey}&units=metric`);

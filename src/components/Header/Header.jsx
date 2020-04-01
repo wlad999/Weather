@@ -3,12 +3,31 @@ import "./Header.scss";
 import Nav from "../Nav/Nav";
 import Input from "../Input/Input";
 
-const Header = props => {
-  const { coord5daysHours, getCityWeather, coords, foundСity } = props;
+const Header = ({
+  showCityWeather,
+  getCityWeather,
+  foundСity,
+  tomorrowToggle,
+  todayToggle,
+  weekToggle,
+  ownWeatherNow,
+  cityWeatherWeek,
+  cityList,
+  toggle,
+}) => {
   return (
-    <div className="row justify-content-between align-items-center Nav border-bottom border-2">
+    <div className="row justify-content-between align-items-center Header border-bottom border-2">
       <div className="col-6">
-        <Nav coord5daysHours={coord5daysHours} coords={coords} />
+        <Nav
+          tomorrowToggle={tomorrowToggle}
+          todayToggle={todayToggle}
+          weekToggle={weekToggle}
+          showCityWeather={showCityWeather}
+          ownWeatherNow={ownWeatherNow}
+          cityWeatherWeek={cityWeatherWeek}
+          cityList={cityList}
+          toggle={toggle}
+        />
       </div>
       <div className="col-4">
         <Input getCityWeather={getCityWeather} foundСity={foundСity} />

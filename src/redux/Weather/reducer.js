@@ -5,6 +5,12 @@ const initialState = {
   fiveDayOwnWeather: {},
   foundСity: {},
   citiesList: {},
+  toggle: {
+    today: false,
+    week: false,
+    show: null,
+    ownWeater: true,
+  },
 };
 
 const weather = (state = initialState, { type, payload }) => {
@@ -28,6 +34,11 @@ const weather = (state = initialState, { type, payload }) => {
       return {
         ...state,
         citiesList: { ...payload },
+      };
+    case actionTypes.TOGGLE_SWOW:
+      return {
+        ...state,
+        toggle: { ...state.toggle, ...payload },
       };
     default:
       return state;

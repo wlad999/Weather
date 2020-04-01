@@ -2,8 +2,6 @@ import React from "react";
 import moment from "moment";
 
 const funcDayForecast = props => {
-  // console.log("props", props);
-
   let { fiveDayOwnWeather, rightDay } = props;
   rightDay += "";
 
@@ -14,6 +12,7 @@ const funcDayForecast = props => {
     if (fiveDayOwnWeather.list) {
       forcasetDayList = fiveDayOwnWeather.list.filter(item => {
         const dayin = moment(item.dt * 1000).format("D");
+
         if (rightDay === dayin) {
           return item;
         }
@@ -35,8 +34,6 @@ const funcDayForecast = props => {
   } catch (error) {
     console.log(error);
   }
-  console.log("dayForecast", dayForecast);
-
   return dayForecast;
 };
 

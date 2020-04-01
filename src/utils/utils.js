@@ -2,18 +2,12 @@ import { createBrowserHistory } from "history";
 
 export const history = createBrowserHistory();
 
-export const createAction = type => payload => ({
-  type,
-  payload,
-});
+export const weatherApiKey = "1fcb6a8d1c0a2784ad8119001af42f2c";
 
-export const weatherApiKey = "0bebc8141664e41c59c89d99a03681cd";
-
-export const cityRegExp = /(^[a-zA-Z]+$)|(^[ЁёА-я]+$)/;
+export const cityRegExp = /(^[a-zA-Z ]+$)|(^[ЁёА-я ]+$)/;
 
 export const setTown = town => {
   const citiesList = JSON.stringify(town);
-
   localStorage.setItem("savedCities", citiesList);
 };
 

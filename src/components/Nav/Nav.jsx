@@ -1,38 +1,47 @@
 import React from "react";
-import "./Nav.scss";
+import { useLocation } from "react-router-dom";
 
-const Nav = props => {
-  const { coord5daysHours } = props;
+const Nav = ({
+  tomorrowToggle,
+  todayToggle,
+  weekToggle,
+  showCityWeather,
+  ownWeatherNow,
+  cityWeatherWeek,
+  cityList,
+  toggle,
+}) => {
+  const useQuery = () => new URLSearchParams(useLocation().search);
+  const query = useQuery();
+  const city = query.get("id");
 
-  let todayWeather;
-
-  try {
-    const { coords } = props;
-    const { latitude, longitude } = coords;
-
-    todayWeather = () => {
-      if (latitude && longitude) {
-        coord5daysHours(latitude, longitude);
-      }
-    };
-  } catch (error) {
-    console.log("error in trycatch");
+  if (
+    city &&
+    ownWeatherNow.name &&
+    city !== ownWeatherNow.name &&
+    toggle.ownWeater === false
+  ) {
+    showCityWeather(city);
+    cityWeatherWeek(city);
   }
 
   return (
     <nav className="nav">
+      <button type="button" className="btn text-black-50" onClick={todayToggle}>
+        Today
+      </button>
       <button
         type="button"
         className="btn text-black-50"
-        onClick={todayWeather}
+        onClick={tomorrowToggle}
       >
-        Today
-      </button>
-      <button type="button" className="btn text-black-50">
         Tomorrow
       </button>
-      <button type="button" className="btn text-black-50">
+      <button type="button" className="btn text-black-50" onClick={weekToggle}>
         Week
+      </button>
+      <button type="button" className="btn text-black-50" onClick={cityList}>
+        Own weather
       </button>
     </nav>
   );

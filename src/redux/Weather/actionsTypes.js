@@ -3,6 +3,8 @@ const actionTypes = {
   WEATHER_COORDS_5_DAYS: "WEATHER_COORDS_5_DAYS",
   CITIES_LIST: "CITIES_LIST",
   FOUND_CITY: "FOUND_CITY",
+  // CITY_WEATHER: "CITY_WEATHER",
+  TOGGLE_SWOW: "TOGGLE_SWOW",
 };
 
 export default actionTypes;
