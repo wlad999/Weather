@@ -51,6 +51,8 @@ class App extends Component {
       cityWeatherWeek,
       cityList,
       cityToggle,
+      inputError,
+      clearInput,
     } = this.props;
 
     return (
@@ -66,6 +68,8 @@ class App extends Component {
           cityWeatherWeek={cityWeatherWeek}
           cityList={cityList}
           toggle={toggle}
+          inputError={inputError}
+          clearInput={clearInput}
         />
         <City
           ownWeatherNow={ownWeatherNow}
@@ -91,6 +95,7 @@ const MSTP = state => ({
   foundСity: state.weather.foundСity,
   citiesList: state.weather.citiesList,
   toggle: state.weather.toggle,
+  inputError: state.weather.inputError,
 });
 
 export default compose(

@@ -10,7 +10,7 @@ const validationSchema = Yup.object().shape({
     .max(30, "Name too long"),
 });
 
-const Input = ({ getCityWeather, foundСity }) => {
+const Input = ({ getCityWeather, foundСity, inputError, clearInput }) => {
   const onSubmit = values => {
     getCityWeather(values.city);
     values.city = "";
@@ -19,6 +19,7 @@ const Input = ({ getCityWeather, foundСity }) => {
     e.persist();
     handleChange(e);
     setFieldTouched(name, true, false);
+    clearInput();
   };
 
   return (
@@ -39,11 +40,15 @@ const Input = ({ getCityWeather, foundСity }) => {
             placeholder="Find city..."
             autoComplete="on"
             value={values.city}
+            onBlur={clearInput}
           />
           {errors.city && (
             <div className="text-danger small">
               <ErrorMessage name="city" />
             </div>
+          )}
+          {inputError.message && (
+            <div className="text-danger small">{inputError.message}</div>
           )}
           {!errors.city && foundСity.name && (
             <div className="text-success small">

@@ -5,6 +5,7 @@ const initialState = {
   fiveDayOwnWeather: {},
   foundСity: {},
   citiesList: {},
+  inputError: {},
   toggle: {
     today: false,
     week: false,
@@ -39,6 +40,11 @@ const weather = (state = initialState, { type, payload }) => {
       return {
         ...state,
         toggle: { ...state.toggle, ...payload },
+      };
+    case actionTypes.INPUT_ERROR:
+      return {
+        ...state,
+        inputError: payload,
       };
     default:
       return state;

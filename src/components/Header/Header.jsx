@@ -14,6 +14,8 @@ const Header = ({
   cityWeatherWeek,
   cityList,
   toggle,
+  inputError,
+  clearInput,
 }) => {
   return (
     <div className="row justify-content-between align-items-center Header border-bottom border-2">
@@ -30,7 +32,12 @@ const Header = ({
         />
       </div>
       <div className="col-4">
-        <Input getCityWeather={getCityWeather} foundСity={foundСity} />
+        <Input
+          getCityWeather={getCityWeather}
+          foundСity={foundСity}
+          inputError={inputError}
+          clearInput={clearInput}
+        />
       </div>
     </div>
   );

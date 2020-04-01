@@ -16,7 +16,6 @@ const funcDataForCity = ({
     addCityToList = { ...citiesList };
     addCityToList[cityName] = cityName;
   }
-  console.log("addCityToList", addCityToList);
 
   try {
     if (ownWeatherNow && ownWeatherNow.main) {

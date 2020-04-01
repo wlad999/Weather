@@ -67,10 +67,15 @@ export const getCityWeather = town => async dispatch => {
     }
   } catch (error) {
     const { response } = error.request;
-    console.log("response error", response);
-    console.log("error", error);
+    const errorData = JSON.parse(response);
+    dispatch({ type: actionTypes.INPUT_ERROR, payload: errorData });
   }
 };
+export const clearInput = () => ({
+  type: actionTypes.INPUT_ERROR,
+  payload: {},
+});
+
 export const showCityWeather = town => async dispatch => {
   try {
     const { data, status } = await API.getWeather.city(town);
