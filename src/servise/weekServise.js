@@ -40,6 +40,5 @@ export const funkDataForWeek = fiveDayOwnWeather => {
   } catch (error) {
     console.log("error in trycatch");
   }
-
-  return today, lastDay, weatherArr;
+  return { today, lastDay, weatherArr };
 };
