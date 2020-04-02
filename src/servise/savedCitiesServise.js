@@ -13,6 +13,7 @@ const funcCitiesCard = ({ citiesList, cityToggle, saveCity }) => {
       <div className="col-sm-2 p-2" key={item} id={item}>
         <div className="card" style={{ height: "8rem" }}>
           <button
+            type="button"
             className="btn text-secondary text-right p-0 pr-2"
             onClick={deleteCityFromList}
           >

@@ -3,11 +3,6 @@ import "./City.scss";
 import Geolocation from "../Geo/Geolocation";
 import funcDataForCity from "../../servise/cityServise";
 
-const cityButton =
-  "btn text-secondary font-weight-bold rounded-circle border border-secondary border-3";
-const cityButtonSucces =
-  "btn font-weight-bold rounded-circle border border-secondary border-3 btn-success";
-
 const City = ({
   ownWeatherNow,
   coords,
@@ -23,7 +18,16 @@ const City = ({
     foundСity,
     citiesList,
   });
-  const { main, cityName, sys, overcast, windSpeed, addCity } = dataForCity;
+  const {
+    main,
+    cityName,
+    sys,
+    overcast,
+    windSpeed,
+    addCity,
+    cityButton,
+    cityButtonSucces,
+  } = dataForCity;
 
   return (
     <div className="City pt-4 pb-4">
@@ -48,7 +52,7 @@ const City = ({
               disabled={!cityName}
               onClick={addCity}
             >
-              <span className="d-flex align-items-center">&#43;</span>
+              &#43;
             </button>
           </div>
           <div className="col-12 text-center">

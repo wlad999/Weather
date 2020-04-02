@@ -28,7 +28,20 @@ const funcDataForCity = ({
     console.log("ERRER", error);
   }
   const addCity = () => saveCity(addCityToList);
-  return { main, cityName, sys, overcast, windSpeed, addCity };
+  const cityButton =
+    "btn text-secondary font-weight-bold rounded-circle border border-secondary border-3";
+  const cityButtonSucces =
+    "btn font-weight-bold rounded-circle border border-secondary border-3 btn-success";
+  return {
+    main,
+    cityName,
+    sys,
+    overcast,
+    windSpeed,
+    addCity,
+    cityButton,
+    cityButtonSucces,
+  };
 };
 
 export default funcDataForCity;
