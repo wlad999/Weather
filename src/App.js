@@ -83,7 +83,11 @@ class App extends Component {
         {toggle.today || toggle.week ? (
           <LongForecast toggle={toggle} fiveDayOwnWeather={fiveDayOwnWeather} />
         ) : (
-          <SavedCities citiesList={citiesList} cityToggle={cityToggle} />
+          <SavedCities
+            citiesList={citiesList}
+            cityToggle={cityToggle}
+            saveCity={saveCity}
+          />
         )}
       </div>
     );

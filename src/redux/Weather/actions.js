@@ -105,8 +105,8 @@ export const cityWeatherWeek = town => async dispatch => {
   }
 };
 
-export const saveCity = town => async dispatch => {
-  await setTown(town);
-  await dispatch({ type: actionTypes.CITIES_LIST, payload: town });
+export const saveCity = list => async dispatch => {
+  await setTown(list);
+  await dispatch({ type: actionTypes.CITIES_LIST, payload: list });
   await dispatch({ type: actionTypes.FOUND_CITY, payload: {} });
 };
