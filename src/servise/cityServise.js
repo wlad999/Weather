@@ -17,16 +17,13 @@ const funcDataForCity = ({
     addCityToList[cityName] = cityName;
   }
 
-  try {
-    if (ownWeatherNow && ownWeatherNow.main) {
-      main = ownWeatherNow.main;
-      sys = ownWeatherNow.sys;
-      overcast = ownWeatherNow.weather[0].main;
-      windSpeed = ownWeatherNow.wind.speed;
-    }
-  } catch (error) {
-    console.log("ERRER", error);
+  if (ownWeatherNow.main) {
+    main = ownWeatherNow.main;
+    sys = ownWeatherNow.sys;
+    overcast = ownWeatherNow.weather[0].main;
+    windSpeed = ownWeatherNow.wind.speed;
   }
+
   const addCity = () => saveCity(addCityToList);
   const cityButton =
     "btn text-secondary font-weight-bold rounded-circle border border-secondary border-3";
