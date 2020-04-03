@@ -57,13 +57,12 @@ const City = ({
           </div>
           <div className="col-12 text-center">
             <p>
-              {ownWeatherNow && ownWeatherNow.name}, {sys && sys.country}
+              {ownWeatherNow.name}, {sys.country}
             </p>
           </div>
           <div className="col-12 text-center font-weight-bold">
             <p>
-              {overcast && overcast}, Wind - {windSpeed && windSpeed} meter per
-              second
+              {overcast}, Wind - {windSpeed} meter per second
             </p>
           </div>
         </div>
