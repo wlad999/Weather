@@ -1,6 +1,6 @@
 import React from "react";
 import GoogleMap from "../GoogleMap/GoogleMap";
-import funkDataForDay from "../../servise/dayServise";
+import funkDataForDay from "../../service/dayService";
 
 const Today = ({ fiveDayOwnWeather, toggle }) => {
   const dataForDay = funkDataForDay({ fiveDayOwnWeather, toggle });

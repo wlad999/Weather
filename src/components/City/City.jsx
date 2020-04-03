@@ -1,7 +1,7 @@
 import React from "react";
 import "./City.scss";
 import Geolocation from "../Geo/Geolocation";
-import funcDataForCity from "../../servise/cityServise";
+import funcDataForCity from "../../service/cityService";
 
 const City = ({
   ownWeatherNow,

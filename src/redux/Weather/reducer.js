@@ -4,7 +4,14 @@ const initialState = {
   ownWeatherNow: {},
   fiveDayOwnWeather: {},
   foundСity: {},
-  citiesList: {},
+  citiesList: {
+    London: "London",
+    "New York": "New York",
+    "Hong Kong": "Hong Kong",
+    Singapore: "Singapore",
+    "Frankfurt am Main": "Frankfurt am Main",
+    Zurich: "Zurich",
+  },
   inputError: {},
   toggle: {
     today: false,

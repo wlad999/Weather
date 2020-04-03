@@ -1,5 +1,5 @@
 import React from "react";
-import funkDataForWeek from "../../servise/weekServise";
+import funkDataForWeek from "../../service/weekService";
 
 const Week = ({ fiveDayOwnWeather }) => {
   const dataForWeek = funkDataForWeek(fiveDayOwnWeather);

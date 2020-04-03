@@ -15,3 +15,9 @@ export const getCitiesList = () => {
   const savedCities = localStorage.getItem("savedCities");
   return JSON.parse(savedCities);
 };
+
+export const setDefaultCitiesList = ({ saveCity }) => {
+  if (Boolean(getCitiesList()) && Object.keys(getCitiesList()).length) {
+    saveCity(getCitiesList());
+  }
+};

@@ -7,7 +7,7 @@ import City from "./components/City/City";
 import SavedCities from "./components/SavedCitys/SavedCitys";
 import LongForecast from "./components/LongForecast/LongForecast";
 import * as actions from "./redux/Weather/actions";
-import { getCitiesList } from "./utils/utils";
+import { setDefaultCitiesList } from "./utils/utils";
 
 class App extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class App extends Component {
 
   componentDidMount() {
     const { saveCity } = this.props;
-    saveCity(getCitiesList());
+    setDefaultCitiesList({ saveCity });
   }
 
   componentDidUpdate(prevProps) {

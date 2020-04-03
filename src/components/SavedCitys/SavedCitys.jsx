@@ -1,5 +1,5 @@
 import React from "react";
-import funcCitiesCard from "../../servise/savedCitiesServise";
+import funcCitiesCard from "../../service/savedCitiesService";
 
 const SavedCities = ({ citiesList, cityToggle, saveCity }) => {
   const citiesCard = funcCitiesCard({ citiesList, cityToggle, saveCity });
