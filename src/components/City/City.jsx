@@ -30,7 +30,7 @@ const City = ({
   } = dataForCity;
 
   return (
-    <div className="City pt-4 pb-4">
+    <div className="City pt-4">
       {!ownWeatherNow.main ? (
         <Geolocation
           coords={coords}

@@ -7,10 +7,10 @@ const Today = ({ fiveDayOwnWeather, toggle }) => {
   const { dayForecast, month, rightDay, center } = dataForDay;
 
   return (
-    <div className="row pt-4">
+    <div className="row pt-5">
       <div className="col-4 offset-1">
-        <h2 className="font-weight-bold">{toggle.show}</h2>
-        <p className="pt-2">
+        <h2 className="font-weight-bold mb-0">{toggle.show}</h2>
+        <p>
           {month}, {rightDay}
         </p>
         <p className="pb-2 border-bottom border-2">
