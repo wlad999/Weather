@@ -6,9 +6,11 @@ const SavedCities = ({ citiesList, cityToggle, saveCity }) => {
 
   return (
     <div className="row">
-      <div className="col-10 offset-1 pt-1">
+      <div className="col-10 offset-1 pt-4">
         <h3 className="font-weight-bold mb-4 text-center">Saved cities</h3>
-        <div className="row">{citiesCard && citiesCard}</div>
+        <div className="row overflow-auto" style={{ height: "18rem" }}>
+          {citiesCard && citiesCard}
+        </div>
       </div>
     </div>
   );
