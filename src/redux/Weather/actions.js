@@ -13,8 +13,7 @@ export const userWeather = (lat, lon) => async dispatch => {
     }
   } catch (error) {
     const { response } = error.request;
-    console.log("response error", response);
-    console.log("error", error);
+    console.log("response error", error, response);
   }
 };
 
@@ -29,8 +28,7 @@ export const coord5daysHours = (lat, lon) => async dispatch => {
     }
   } catch (error) {
     const { response } = error.request;
-    console.log("response error", response);
-    console.log("error", error);
+    console.log("response error", error, response);
   }
 };
 export const todayToggle = () => ({
@@ -85,8 +83,7 @@ export const showCityWeather = town => async dispatch => {
     }
   } catch (error) {
     const { response } = error.request;
-    console.log("response error", response);
-    console.log("error", error);
+    console.log("response error", error, response);
   }
 };
 export const cityWeatherWeek = town => async dispatch => {
@@ -100,8 +97,7 @@ export const cityWeatherWeek = town => async dispatch => {
     }
   } catch (error) {
     const { response } = error.request;
-    console.log("response error", response);
-    console.log("error", error);
+    console.log("response error", error, response);
   }
 };
 
