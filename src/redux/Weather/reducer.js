@@ -14,6 +14,7 @@ const initialState = {
   },
   inputError: {},
   toggle: {
+    showCurrenWeather: true,
     today: false,
     week: false,
     show: null,

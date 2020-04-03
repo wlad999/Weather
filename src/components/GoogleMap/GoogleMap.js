@@ -12,8 +12,8 @@ class GoogleMaps extends Component {
   };
 
   render() {
-    const { lat } = this.props.center;
-    const { lng } = this.props.center;
+    const { lat, lng } = this.props.center;
+    const { showCurrenWeather } = this.props;
 
     return (
       <div style={{ height: "430px", width: "100%" }}>
@@ -22,7 +22,7 @@ class GoogleMaps extends Component {
           defaultZoom={this.props.zoom}
           center={this.props.center}
         >
-          <Marker lat={lat} lng={lng} />
+          <Marker lat={lat} lng={lng} showCurrenWeather={showCurrenWeather} />
         </GoogleMapReact>
       </div>
     );

@@ -53,6 +53,7 @@ class App extends Component {
       cityToggle,
       inputError,
       clearInput,
+      showCurrenWeather,
     } = this.props;
 
     return (
@@ -79,9 +80,14 @@ class App extends Component {
           saveCity={saveCity}
           foundСity={foundСity}
           citiesList={citiesList}
+          toggle={toggle}
         />
         {toggle.today || toggle.week ? (
-          <LongForecast toggle={toggle} fiveDayOwnWeather={fiveDayOwnWeather} />
+          <LongForecast
+            toggle={toggle}
+            fiveDayOwnWeather={fiveDayOwnWeather}
+            showCurrenWeather={showCurrenWeather}
+          />
         ) : (
           <SavedCities
             citiesList={citiesList}

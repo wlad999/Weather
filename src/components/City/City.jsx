@@ -11,6 +11,7 @@ const City = ({
   saveCity,
   foundСity,
   citiesList,
+  toggle,
 }) => {
   const dataForCity = funcDataForCity({
     ownWeatherNow,
@@ -30,7 +31,7 @@ const City = ({
   } = dataForCity;
 
   return (
-    <div className="City pt-4">
+    <div className="pt-4">
       {!ownWeatherNow.main ? (
         <Geolocation
           coords={coords}
@@ -38,14 +39,14 @@ const City = ({
           isGeolocationEnabled={isGeolocationEnabled}
         />
       ) : (
-        <div className="row justify-content-between border-bottom border-2">
-          <div className="col-4 offset-4 text-center">
-            <h2 className="font-weight-bold">
-              {main && main.temp}
+        <div className="row justify-content-between border-bottom border-2 City">
+          <div className="col-4 offset-4 text-center align-self-center">
+            <h2 className="font-weight-bold mb-0">
+              {main.temp}
               &deg;C
             </h2>
           </div>
-          <div className="col-4 text-right">
+          <div className="col-4 text-right align-self-center">
             <button
               type="button"
               className={!cityName ? cityButton : cityButtonSucces}
@@ -60,9 +61,12 @@ const City = ({
               {ownWeatherNow.name}, {sys.country}
             </p>
           </div>
+
           <div className="col-12 text-center font-weight-bold">
-            <p>
-              {overcast}, Wind - {windSpeed} meter per second
+            <p className="p-0">
+              {toggle.showCurrenWeather &&
+                `${overcast}, Wind - ${windSpeed} meter per second`}
+              <span className="invisible">i</span>
             </p>
           </div>
         </div>

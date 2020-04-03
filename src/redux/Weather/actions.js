@@ -33,25 +33,35 @@ export const coord5daysHours = (lat, lon) => async dispatch => {
 };
 export const todayToggle = () => ({
   type: actionTypes.TOGGLE_SWOW,
-  payload: { today: true, show: "Today" },
+  payload: { today: true, show: "Today", showCurrenWeather: false },
 });
 export const tomorrowToggle = () => ({
   type: actionTypes.TOGGLE_SWOW,
-  payload: { today: true, show: "Tomorrow" },
+  payload: { today: true, show: "Tomorrow", showCurrenWeather: false },
 });
 export const weekToggle = () => ({
   type: actionTypes.TOGGLE_SWOW,
-  payload: { today: false, show: "Week", week: true },
+  payload: { today: false, show: "Week", week: true, showCurrenWeather: false },
 });
 export const cityToggle = () => ({
   type: actionTypes.TOGGLE_SWOW,
-  payload: { ownWeater: false },
+  payload: { ownWeater: false, showCurrenWeather: false },
+});
+export const showCurrenWeather = () => ({
+  type: actionTypes.TOGGLE_SWOW,
+  payload: { showCurrenWeather: true },
 });
 
 export const cityList = () => async dispatch => {
   await dispatch({
     type: actionTypes.TOGGLE_SWOW,
-    payload: { today: false, week: false, show: null, ownWeater: true },
+    payload: {
+      today: false,
+      week: false,
+      show: null,
+      ownWeater: true,
+      showCurrenWeather: true,
+    },
   });
   history.push("");
 };

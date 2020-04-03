@@ -2,7 +2,11 @@ import React from "react";
 import GoogleMap from "../GoogleMap/GoogleMap";
 import funkDataForDay from "../../service/dayService";
 
-const Today = ({ fiveDayOwnWeather, toggle }) => {
+const Today = ({
+  fiveDayOwnWeather,
+  toggle,
+  showCurrenWeather = { showCurrenWeather },
+}) => {
   const dataForDay = funkDataForDay({ fiveDayOwnWeather, toggle });
   const { dayForecast, month, rightDay, center } = dataForDay;
 
@@ -23,7 +27,7 @@ const Today = ({ fiveDayOwnWeather, toggle }) => {
         )}
       </div>
       <div className="col-6">
-        <GoogleMap center={center} />
+        <GoogleMap center={center} showCurrenWeather={showCurrenWeather} />
       </div>
     </div>
   );
