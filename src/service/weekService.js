@@ -35,10 +35,11 @@ const funkDataForWeek = fiveDayOwnWeather => {
       </div>,
     );
   });
-
-  lastDay = moment(
-    fiveDayOwnWeather.list[fiveDayOwnWeather.list.length - 1].dt * 1000,
-  ).format("MMMM, D");
+  if (fiveDayOwnWeather.list) {
+    lastDay = moment(
+      fiveDayOwnWeather.list[fiveDayOwnWeather.list.length - 1].dt * 1000,
+    ).format("MMMM, D");
+  }
 
   return { today, lastDay, weatherArr };
 };
