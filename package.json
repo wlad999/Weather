@@ -22,7 +22,7 @@
     "history": "^4.10.1",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
     "prop-types": "^15.7.2",
